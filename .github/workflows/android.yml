@@ -18,16 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Configurar Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Descargar e instalar Gradle 8.2
+        run: |
+          wget https://services.gradle.org/distributions/gradle-8.2-bin.zip
+          unzip -q gradle-8.2-bin.zip
+          echo "$PWD/gradle-8.2/bin" >> $GITHUB_PATH
 
-      - name: Aceptar licencias del SDK
-        run: yes | sdkmanager --licenses || true
-
-      - name: Configurar Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: Generar Wrapper
+      - name: Generar Gradle Wrapper
         run: gradle wrapper --gradle-version=8.2
 
       - name: Compilar APK
