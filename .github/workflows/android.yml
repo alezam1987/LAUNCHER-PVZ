@@ -18,12 +18,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Instalar y configurar Gradle
+      - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.2'
 
-      - name: Compilar APK directamente
+      - name: Compilar APK
         run: gradle assembleDebug
 
       - name: Subir APK compilado
