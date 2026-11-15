@@ -1,0 +1,2 @@
+rootProject.name = "PvzLauncher"
+include ':app'
